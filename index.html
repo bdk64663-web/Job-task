@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Jobs App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f4f7;
+      margin: 0;
+      padding: 15px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+    .jobs { background: #3498db; color: #fff; }
+    .refer { background: #f39c12; color: #fff; }
+    .withdraw { background: #2ecc71; color: #fff; }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h3>👤 User</h3>
+    <p id="user">Loading...</p>
+    <p>💰 Balance: 0 coins</p>
+  </div>
+
+  <div class="card">
+    <button class="btn jobs">💼 Jobs (Earn Coins)</button>
+    <button class="btn refer">🤝 Refer & Earn</button>
+    <button class="btn withdraw">💸 Withdraw</button>
+  </div>
+
+  <script>
+    let tg = window.Telegram.WebApp;
+    tg.expand();
+
+    if (tg.initDataUnsafe.user) {
+      document.getElementById("user").innerText =
+        tg.initDataUnsafe.user.first_name;
+    }
+  </script>
+</body>
+</html>
